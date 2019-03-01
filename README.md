@@ -1,4 +1,4 @@
-## slides: https://pulecp.github.io/installfest2019
+## slides: https://pulecp.github.io/installfest2019/
 ## examples: check `examples/` directory
 
 
