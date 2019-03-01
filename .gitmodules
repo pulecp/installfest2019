@@ -13,3 +13,6 @@
 [submodule "examples/modules/systemd"]
 	path = examples/modules/systemd
 	url = https://github.com/NTTCom-MS/eyp-systemd
+[submodule "examples/modules/apache"]
+	path = examples/modules/apache
+	url = https://github.com/puppetlabs/puppetlabs-apache

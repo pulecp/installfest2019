@@ -10,7 +10,7 @@
 #
 # connect to mysql:
 #
-#   mysql --socket /var/mysql/<instance_name>/mysqld.sock --user=root -p
+#   mysql --socket /var/mysql/bohuslava/mysqld.sock --user=root -p
 #
 
 $instance_name = 'bohuslava'
