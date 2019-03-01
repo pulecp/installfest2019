@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/idea.css">
+
+		<!-- custom -->
+		<link rel="stylesheet" href="css/kayn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section>
+            <h2>Infrastruktura kódem - Puppet</h2>
+            <h5>Pavel Pulec</h5>
+        </section>
+
+        <section>
+
+            <section>
+                <h2>O mně</h2>
+            </section>
+
+            <section>
+                <h3>Pavel Pulec</h3>
+                <ul>
+                    <li>operations @inuits.{cz,be,nl}</li>
+                    <li>Puppet, high-availability, Jenkins, Icinga, ELK,  ...</li>
+                    <li>MongoDB, GlusterFS, RabbitMQ, HAProxy, Apache, MySQL, ...</li>
+                </ul>
+                <img src="./img/inuits_default_logo-nofont.svg" width="15%">
+            </section>
+
+        </section>
+
+        <section>
+
+            <section>
+                <h3>Infrastruktura kódem</h3>
+                <ul>
+                    <li>způsob správy infrastruktury pomocí čitelných souborů bez manuální intervence</li>
+                    <li>nahrazení všech manuálních kroků pomocí kódu (souborů)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Proč?</h3>
+                <ul>
+                    <li>bezpečnost</li>
+                    <li>konzistence</li>
+                    <li>efektivita</li>
+                    <li>udržitelnost</li>
+                    <li>znovupoužitelnost</li>
+                    <li>dokumentace</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Puppet</h3>
+                <ul>
+                    <li>server/agent model (metoda "pull")</li>
+                    <li>deklarativní</li>
+                    <li>uživatel definuje systémové zdroje a cílový stav pomocí tzv. manifestů</li>
+                    <li>Puppet kontroluje aktuální stav a koná tak, aby docílil definovaního stavu</li>
+                    <li>Hiera - key/value úložiště pro konfigurační data</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Puppet - server/agent struktura</h3>
+                <img src="./img/puppet_struct.svg" width="100%">
+            </section>
+
+            <section>
+                <h3>Jak Puppet funguje?</h3>
+                <ul>
+                    <li>server sesbírá "fakty" a odešle je na Puppetmaster</li>
+<pre><code class="bash">root@server:~$ facter -p
+disks => {
+  sda => {
+    model => "Virtual disk",
+    size => "8.00 GiB",
+    size_bytes => 8589934592,
+    vendor => "ExampleVendor"
+  }
+}
+dmi => {
+  bios => {
+    release_date => "06/23/2018",
+    vendor => "Example Vendor",
+    version => "6.00"
+  }
+}
+[...]</code></pre>
+                    <li>Puppetmaster za pomoci faktů zkompiluje katalog a odešle ho zpět na server</li>
+                    <li>Server zkompilovaný katalog aplikuje a vygeneruje report</li>
+                    <li>Report je možné odeslat např. do Foremana - přehled všech změn</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Foreman - přehled</h3>
+                <img src="./img/foreman_overview.png" width="100%">
+            </section>
+
+            <section>
+                <h3>Foreman - report</h3>
+                <img src="./img/foreman_report.png" width="100%">
+            </section>
+
+            <section>
+                <h3>Foreman - změny</h3>
+                <img src="./img/foreman_diff.png" width="100%">
+            </section>
+
+
+            <section>
+                <h3>PuppetDB - exported resources</h3>
+                <ul>
+                    <li>určité zdroje v Puppetu lze exportovat na jiné servery</li>
+                    <li>tyto exportované zdroje lze podle pravidel kolektovat na více serverech</li>
+                    <li>využití - konfigurace reverzní proxy, firewallu, monitorování</li>
+                </ul>
+            </section>
+
+        </section>
+
+        <section>
+
+            <section>
+                <h3>Workshop</h3>
+                <ul>
+                    <li>každý má přihlašovací údaje na testovací server</li>
+                    <li>...a může se přihlásit</li>
+                    <li>možnost práce na svém stroji</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Workshop - příprava stroje</h3>
+                <ul>
+                    <li>CentOS 7</li>
+                    <li>Puppet 5</li>
+<div style="width:112%">
+<pre><code class="bash"># repositář s puppetem
+yum install https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+yum install puppet
+git clone https://pulecp.github.io/installfest2019
+cd installfest2019
+git sumodule update --init
+cd examples/</code></pre>
+</div>
+                </ul>
+            </section>
+
+        </section>
+
+
+
+        <section>
+            <h3>Dotazy?</h3>
+            <ul>
+                <li>slajdy: <a href="https://pulecp.github.io/installfest2019">https://pulecp.github.io/installfest2019</a></li>
+                <li>kayn<code>@</code>inuits.eu</li>
+                <li>Děkuji za pozornost!</li>
+            </ul>
+            <img src="./img/inuits_default_logo-nofont.svg" width="10%">
+        </section>
+
+        <section>
+            <h3>Zdroje</h3>
+            <ul>
+                <li><a href="https://www.ssh.com/ssh/config/">https://www.ssh.com/ssh/config/</a></li>
+                <li><a href="https://github.com/lilydjwg/pssh">https://github.com/lilydjwg/pssh</a></li>
+                <li><a href="http://docs.ansible.com/">http://docs.ansible.com/</a></li>
+                <li><a href="https://github.com/duncs/clusterssh">https://github.com/duncs/clusterssh</a></li>
+                <li><a href="https://github.com/chaos/pdsh">https://github.com/chaos/pdsh</a></li>
+            </ul>
+        </section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        width: "92%",
+        height: "92%",
+        margin: 0.1,
+        minScale: 1,
+        maxScale: 1,
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

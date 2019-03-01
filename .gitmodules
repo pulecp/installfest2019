@@ -1,0 +1,15 @@
+[submodule "examples/modules/concat"]
+	path = examples/modules/concat
+	url = https://github.com/puppetlabs/puppetlabs-concat
+[submodule "examples/modules/eyplib"]
+	path = examples/modules/eyplib
+	url = https://github.com/NTTCom-MS/eyp-eyplib
+[submodule "examples/modules/mysql"]
+	path = examples/modules/mysql
+	url = https://github.com/NTTCom-MS/eyp-mysql
+[submodule "examples/modules/stdlib"]
+	path = examples/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib
+[submodule "examples/modules/systemd"]
+	path = examples/modules/systemd
+	url = https://github.com/NTTCom-MS/eyp-systemd
