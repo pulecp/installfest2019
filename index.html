@@ -139,6 +139,14 @@ dmi => {
                     <li>tyto exportované zdroje lze podle pravidel kolektovat na více serverech</li>
                     <li>využití - konfigurace reverzní proxy, firewallu, monitorování</li>
                     <li>pomalé</li>
+<pre><code class="bash"># exportovaní zdrojů
+@@notify { 'exported resource':
+  tag => 'foo'
+}
+
+# kolektování resourců
+Notify <<| tag == 'foo' |>>
+</code></pre>
                 </ul>
             </section>
 
