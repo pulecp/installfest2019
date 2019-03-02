@@ -1,4 +1,4 @@
-# apply me by `puppet apply --show_diff --modulepath=modules/ 05mysql.pp
+# apply me by `sudo /opt/puppetlabs/bin/puppet apply --show_diff --modulepath=modules/ 06mysql.pp
 #
 # used modules:
 #   modules/mysql     https://github.com/NTTCom-MS/eyp-mysql

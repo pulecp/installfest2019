@@ -1,4 +1,4 @@
-# apply me by `puppet apply --show_diff --modulepath=modules/ 05apache.pp
+# apply me by `sudo /opt/puppetlabs/bin/puppet apply --show_diff --modulepath=modules/ 05apache.pp
 #
 #
 # used modules:
