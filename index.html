@@ -138,6 +138,7 @@ dmi => {
                     <li>určité zdroje v Puppetu lze exportovat na jiné servery</li>
                     <li>tyto exportované zdroje lze podle pravidel kolektovat na více serverech</li>
                     <li>využití - konfigurace reverzní proxy, firewallu, monitorování</li>
+                    <li>pomalé</li>
                 </ul>
             </section>
 
@@ -171,11 +172,23 @@ cd examples/</code></pre>
                 </ul>
             </section>
 
+            <section>
+                <h3>Workshop - <b>NE</b>-produkční příklady</h3>
+                <ul>
+                    <li>ukázka, syntaxe, principů a jak Puppet funguje</li>
+                    <li>nikoliv ukázka, jak Puppet používat v praxi</li>
+                    <li>produkce:</li>
+<pre><code>s/puppet apply file.pp/puppet agent --test/</code></pre>
+                    <li>chybí ukázka využití ENC, Hiery a PuppetDB</li>
+                </ul>
+            </section>
+
         </section>
 
 
 
         <section>
+
             <h3>Dotazy?</h3>
             <ul>
                 <li>slajdy: <a href="https://pulecp.github.io/installfest2019/">https://pulecp.github.io/installfest2019/</a></li>
@@ -183,17 +196,6 @@ cd examples/</code></pre>
                 <li>Děkuji za pozornost!</li>
             </ul>
             <img src="./img/inuits_default_logo-nofont.svg" width="10%">
-        </section>
-
-        <section>
-            <h3>Zdroje</h3>
-            <ul>
-                <li><a href="https://www.ssh.com/ssh/config/">https://www.ssh.com/ssh/config/</a></li>
-                <li><a href="https://github.com/lilydjwg/pssh">https://github.com/lilydjwg/pssh</a></li>
-                <li><a href="http://docs.ansible.com/">http://docs.ansible.com/</a></li>
-                <li><a href="https://github.com/duncs/clusterssh">https://github.com/duncs/clusterssh</a></li>
-                <li><a href="https://github.com/chaos/pdsh">https://github.com/chaos/pdsh</a></li>
-            </ul>
         </section>
 
 			</div>
